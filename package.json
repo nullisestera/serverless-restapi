@@ -1,0 +1,27 @@
+{
+  "name": "ulises",
+  "version": "1.0.0",
+  "description": "Demo",
+  "main": "handler.js",
+  "scripts": {
+    "deploy-live": "serverless deploy --stage live --verbose",
+    "deploy-dev": "serverless deploy --stage dev --verbose",
+    "test-hello": "serverless invoke local --function hello --path test-data/demo.json",
+    "test-hello-aws": "serverless invoke --function hello --path test-data/demo.json"
+  },
+  "keywords": [
+    "ulises"
+  ],
+  "author": "Ulises",
+  "license": "Show LICENSE file for details",
+  "dependencies": {
+    "aws-sdk": "^2.967.0",
+    "dotenv": "^10.0.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.13.7",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^8.0.0"
+  }
+}

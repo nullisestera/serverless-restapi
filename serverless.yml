@@ -1,0 +1,60 @@
+service: serverless-restapi
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: live
+  region: us-east-2
+  lambdaHashingVersion: 20201221
+
+# add 5 function for CURD operation
+functions: 
+  create:
+    handler: handler.create
+    memorySize: 128
+    role: arn:aws:iam::938824531937:role/apm-lambda-services-staging-us-east-1-lambdaRole
+    events:
+      - http: 
+          path: notes
+          method: post
+          cors: true
+  getOne:
+    handler: handler.getOne
+    memorySize: 128
+    role: arn:aws:iam::938824531937:role/apm-lambda-services-staging-us-east-1-lambdaRole
+    events:
+      - http: 
+          path: notes/{id}
+          method: get
+          cors: true
+  getAll:
+    handler: handler.getAll
+    memorySize: 128
+    role: arn:aws:iam::938824531937:role/apm-lambda-services-staging-us-east-1-lambdaRole
+    events:
+      - http: 
+          path: notes
+          method: get
+          cors: true
+  update:
+    handler: handler.update
+    memorySize: 128
+    role: arn:aws:iam::938824531937:role/apm-lambda-services-staging-us-east-1-lambdaRole
+    events:
+      - http: 
+          path: notes/{id}
+          method: put
+          cors: true
+  delete:
+    handler: handler.delete
+    memorySize: 128
+    role: arn:aws:iam::938824531937:role/apm-lambda-services-staging-us-east-1-lambdaRole
+    events:
+      - http: 
+          path: notes/{id}
+          method: delete
+          cors: true
+plugins:
+- serverless-offline # adding the plugin to be able to run the offline emulation
