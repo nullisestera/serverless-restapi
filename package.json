@@ -6,8 +6,7 @@
   "scripts": {
     "deploy-live": "serverless deploy --stage live --verbose",
     "deploy-dev": "serverless deploy --stage dev --verbose",
-    "test-hello": "serverless invoke local --function hello --path test-data/demo.json",
-    "test-hello-aws": "serverless invoke --function hello --path test-data/demo.json"
+    "test-offline": "sls offline start --skipCacheInvalidation -s dev"
   },
   "keywords": [
     "ulises"
